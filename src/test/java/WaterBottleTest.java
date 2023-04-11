@@ -9,7 +9,7 @@ public class WaterBottleTest {
 
     @Before
     public void setUp() {
-        waterbottle = new WaterBottle(100);
+        waterbottle = new WaterBottle();
     }
 
     @Test
@@ -18,14 +18,23 @@ public class WaterBottleTest {
     }
 
     @Test
-    public void shouldTake10FromVolume() {
-        assertEquals(90, waterbottle.drink());
-    }
-
-    @Test
-    public void shouldTake20FromVolume() {
+    public void shouldTake10FromVolumeEachTime() {
         waterbottle.drink();
         waterbottle.drink();
         assertEquals(80, waterbottle.getVolume());
     }
+
+    @Test
+    public void shouldEmptyVolume() {
+        waterbottle.empty();
+        assertEquals(0, waterbottle.getVolume());
+    }
+
+    @Test
+    public void shouldFillVolume() {
+        waterbottle.fill();
+        assertEquals(100, waterbottle.getVolume());
+    }
+
+
 }
